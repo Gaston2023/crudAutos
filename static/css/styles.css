@@ -156,11 +156,11 @@ nav ul li a {
 
 a:hover {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .logo {
-    width: 60px;
+    width: 90px;
     height: 60px;
     position: relative;
     right: 10vw;
@@ -205,7 +205,7 @@ a:hover {
     padding-bottom: 30px;
     padding-left: 2%;
 
-    background: linear-gradient(to bottom, #317ef1 1%, #ffffff 100%)
+    background: linear-gradient(120deg, #0d0d0d, #1a1a1a);
 }
 
 /* CARRUSEL PERSONALIZADO */

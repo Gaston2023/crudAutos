@@ -1,10 +1,9 @@
 
-// ------------- MODIFICADO POR PAMELA---------------------------------------
-
-const URL = "http://127.0.0.1:5000/"
+// const URL = "http://127.0.0.1:5000/"
 
 //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
 //const URL = "https://USUARIO.pythonanywhere.com/"
+const URL = "https://gaston2024.pythonanywhere.com/"
 
 // Variables de estado para controlar la visibilidad y los datos del formulario
 let codigo = '';
@@ -16,14 +15,14 @@ let precio = '';
 let imagen_url = '';
 let imagenSeleccionada = null;
 let imagenUrlTemp = null;
-let mostrarDatosProducto = false;
+let mostrarDatosAuto = false;
 
-document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
+document.getElementById('form-obtener-Auto').addEventListener('submit', obtenerAuto);
 document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
 document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
 
-// Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del producto correspondiente al código ingresado.
-function obtenerProducto(event) {
+// Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del Auto correspondiente al código ingresado.
+function obtenerAuto(event) {
     event.preventDefault();
     codigo = document.getElementById('codigo').value;
     fetch(URL + 'autos/' + codigo)
@@ -41,7 +40,7 @@ function obtenerProducto(event) {
             cantidad = data.cantidad;
             precio = data.precio;
             imagen_url = data.imagen_url;
-            mostrarDatosProducto = true; //Activa la vista del segundo formulario
+            mostrarDatosAuto = true; //Activa la vista del segundo formulario
             mostrarFormulario();
         })
         .catch(error => {
@@ -49,9 +48,9 @@ function obtenerProducto(event) {
         });
 }
 
-// Muestra el formulario con los datos del producto
+// Muestra el formulario con los datos del Auto
 function mostrarFormulario() {
-    if (mostrarDatosProducto) {
+    if (mostrarDatosAuto) {
         document.getElementById('coloModificarr').value = color;
         document.getElementById('modeloModificar').value = modelo;
         document.getElementById('marcaModificar').value = marca;
@@ -61,19 +60,19 @@ function mostrarFormulario() {
         const imagenActual = document.getElementById('imagen-actual');
         if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
 
-            imagenActual.src = '../static/imagenes/' + imagen_url;
+            //imagenActual.src = '../static/imagenes/' + imagen_url;
 
             //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
             //imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + imagen_url;
-
+            imagenActual.src = 'https://www.pythonanywhere.com/user/gaston2024/files/home/gaston2024/mysite/static/imagenes/' + imagen_url;
             imagenActual.style.display = 'block'; // Muestra la imagen actual
         } else {
             imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
         }
 
-        document.getElementById('datos-producto').style.display = 'block';
+        document.getElementById('datos-Auto').style.display = 'block';
     } else {
-        document.getElementById('datos-producto').style.display = 'none';
+        document.getElementById('datos-Auto').style.display = 'none';
     }
 }
 
@@ -88,7 +87,7 @@ function seleccionarImagen(event) {
     imagenVistaPrevia.style.display = 'block';
 }
 
-// Se usa para enviar los datos modificados del producto al servidor.
+// Se usa para enviar los datos modificados del Auto al servidor.
 function guardarCambios(event) {
     event.preventDefault();
 
@@ -151,7 +150,7 @@ function limpiarFormulario() {
     imagen_url = '';
     imagenSeleccionada = null;
     imagenUrlTemp = null;
-    mostrarDatosProducto = false;
+    mostrarDatosAuto = false;
 
-    document.getElementById('datos-producto').style.display = 'none';
+    document.getElementById('datos-Auto').style.display = 'none';
 }

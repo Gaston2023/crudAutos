@@ -1,8 +1,8 @@
 
-const URL = "http://127.0.0.1:5000/"
+// const URL = "http://127.0.0.1:5000/"
 
 //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-//const URL = "https://USUARIO.pythonanywhere.com/"
+const URL = "https://gaston2024.pythonanywhere.com/"
 
 
 // Capturamos el evento de envío del formulario
@@ -12,7 +12,7 @@ document.getElementById('formulario').addEventListener('submit', function (event
     var formData = new FormData(this);
 
     // Realizamos la solicitud POST al servidor
-    // con endpoint de productos funciona bien pero con autos tengo problema con cors
+    
     fetch(URL + 'autos', {
         method: 'POST',
         body: formData // Aquí enviamos formData. Dado que formData puede contener archivos, no se utiliza JSON.
@@ -25,12 +25,12 @@ document.getElementById('formulario').addEventListener('submit', function (event
                 return response.json();
             } else {
                 // Si hubo un error, lanzar explícitamente una excepción
-                // para ser "catcheada" más adelante
+                
                 throw new Error('Error al agregar el auto throw.');
             }
         })
 
-        //Respuesta OK, muestra una alerta informando que el producto se agregó correctamente y limpia los campos del formulario para que puedan ser utilizados para un nuevo producto.
+        //Respuesta OK, muestra una alerta informando que el Auto se agregó correctamente y limpia los campos del formulario para que puedan ser utilizados para un nuevo Auto.
         .then(function (data) {
             alert('Auto agregado correctamente.');
         })
@@ -48,7 +48,7 @@ document.getElementById('formulario').addEventListener('submit', function (event
             document.getElementById('marca').value = "";
             document.getElementById('cantidad').value = "";
             document.getElementById('precio').value = "";
-            document.getElementById('imagenProducto').value = "";
-            // document.getElementById('proveedorProducto').value = "";
+            document.getElementById('imagenAuto').value = "";
+            // document.getElementById('proveedorAuto').value = "";
         });
 })

@@ -5,17 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Auto 🚀</title>
+    <title>Modificar Auto</title>
     <link rel="stylesheet" href="../static/css/estilos.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar-index ">
-            <!--<img class="logo-nav" src="./static/imagenes/logos-nav.webp" alt="logo agencia de aprendizaje">-->
-            <img class="logo-nav"
-                src="https://static.vecteezy.com/system/resources/previews/006/850/314/non_2x/auto-car-dealer-logo-design-with-concept-sports-vehicle-icon-silhouette-on-black-background-illustration-vector.jpg"
-                alt="logo agencia de autos">
+        <nav class="navbar-index">
+            
         </nav>
     </header>
 
@@ -29,16 +27,16 @@
 
     <!-- Contenedor principal que será controlado por JavaScript. Este contenedor tendrá dos formularios. -->
     <div id="app">
-        <!-- Primer formulario: Selector de producto. LLama a la función obtenerProducto cuando se envíe el formulario -->
-        <form id="form-obtener-producto">
+        <!-- Primer formulario: Selector de Auto. LLama a la función obtenerAuto cuando se envíe el formulario -->
+        <form id="form-obtener-Auto">
             <label for="codigo">Código:</label>
             <input type="text" id="codigo" required><br>
-            <button type="submit">Modificar Producto</button> <a href="../templates/crud.html">Menu principal</a>
+            <button type="submit">Modificar Auto</button> <a href="../templates/crud.html">Menu principal</a>
         </form>
 
-        <!-- Segundo formulario: se muestra solo si mostrarDatosProducto es verdadero. Llama a la función guardarCambios -->
-        <div id="datos-producto" style="display: none;">
-            <h2>Datos del Producto</h2>
+        <!-- Segundo formulario: se muestra solo si mostrarDatosAuto es verdadero. Llama a la función guardarCambios -->
+        <div id="datos-Auto" style="display: none;">
+            <h2>Datos del Auto</h2>
             <form id="form-guardar-cambios">
                 <label for="coloModificarr">Color:</label>
                 <input type="text" id="coloModificarr" required><br>
@@ -55,7 +53,7 @@
                 <label for="precioModificar">Precio:</label>
                 <input maxlength="8" type="number" step="0.01" id="precioModificar" required><br>
 
-                <!-- Imagen actual del producto - Debe comentarse al subirse al servidor-->
+                <!-- Imagen actual del Auto - Debe comentarse al subirse al servidor-->
                 <img id="imagen-actual" style="max-width: 200px; display: none;">                                
 
                 <!-- Vista previa de la nueva imagen seleccionada -->
@@ -71,157 +69,30 @@
             </form>
         </div>
     </div>
-
+    <footer>
+        <!-- TALVEZ SE DEBERIA AGREGAR MAS INFO O MARKETING -->
+        <section class="infoMarketing">
+            <div class="redes">
+                <a href="https://www.facebook.com/concesionaria"><img src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com/concesionaria"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/concecionaria"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+            </div>
+            <h3 class="espaciado3">SOMOS TOP UNO EN VENTAS</h3>
+            <img src="https://png.pngtree.com/png-clipart/20221008/original/pngtree-number-1-best-seller-award-badge-png-image_8666630.png"
+                alt="topOne">
+            <h3 class="espaciado3">SOMOS TOP UNO EN VENTAS</h3>
+            <h3>
+                La concesionaria que redefine la excelencia. “Autos Prestigio” no es solo un destino, es la cumbre del
+                lujo automotriz. Con una selección inigualable de vehículos de alta gama y un servicio al cliente que
+                supera todas las expectativas, nos hemos ganado el título de la mejor concesionaria del mundo. Nuestro
+                compromiso con la calidad y la satisfacción del cliente es inquebrantable, y cada auto que vendemos es
+                una promesa de rendimiento, elegancia y confiabilidad. Descubre la perfección en cada detalle, desde la
+                primera bienvenida hasta el servicio posventa. En “Autos Prestigio”, no solo compras un auto; adquieres
+                una pieza de la excelencia automotriz.
+            </h3>
+        </section>
+    </footer>
     <script src="../funcionesJS/modificaciones.js"></script>
-    <!--<script>
-        const URL = "http://127.0.0.1:5000/"
-
-        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-        //const URL = "https://USUARIO.pythonanywhere.com/"
-
-        // Variables de estado para controlar la visibilidad y los datos del formulario
-        let codigo = '';
-        let descripcion = '';
-        let cantidad = '';
-        let precio = '';
-        let proveedor = '';
-        let imagen_url = '';
-        let imagenSeleccionada = null;
-        let imagenUrlTemp = null;
-        let mostrarDatosProducto = false;
-
-        document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
-        document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
-        document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
-
-        // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del producto correspondiente al código ingresado.
-        function obtenerProducto(event) {
-            event.preventDefault();
-            codigo = document.getElementById('codigo').value;
-            fetch(URL + 'productos/' + codigo)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    } else {
-                        throw new Error('Error al obtener los datos del producto.')
-                    }
-                })
-                .then(data => {
-                    descripcion = data.descripcion;
-                    cantidad = data.cantidad;
-                    precio = data.precio;
-                    proveedor = data.proveedor;
-                    imagen_url = data.imagen_url;
-                    mostrarDatosProducto = true; //Activa la vista del segundo formulario
-                    mostrarFormulario();
-                })
-                .catch(error => {
-                    alert('Código no encontrado.');
-                });
-        }
-
-        // Muestra el formulario con los datos del producto
-        function mostrarFormulario() {
-            if (mostrarDatosProducto) {
-                document.getElementById('descripcionModificar').value = descripcion;
-                document.getElementById('cantidadModificar').value = cantidad;
-                document.getElementById('precioModificar').value = precio;
-                document.getElementById('proveModificar').value = proveedor;
-
-                const imagenActual = document.getElementById('imagen-actual');
-                if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
-                    
-                    imagenActual.src = './static/imagenes/' + imagen_url;
-                    
-                    //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-                    //imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + imagen_url;
-                    
-                    imagenActual.style.display = 'block'; // Muestra la imagen actual
-                } else {
-                    imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
-                }
-
-                document.getElementById('datos-producto').style.display = 'block';
-            } else {
-                document.getElementById('datos-producto').style.display = 'none';
-            }
-        }
-
-        // Se activa cuando el usuario selecciona una imagen para cargar.
-        function seleccionarImagen(event) {
-            const file = event.target.files[0];
-            imagenSeleccionada = file;
-            imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
-
-            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-            imagenVistaPrevia.src = imagenUrlTemp;
-            imagenVistaPrevia.style.display = 'block';
-        }
-
-        // Se usa para enviar los datos modificados del producto al servidor.
-        function guardarCambios(event) {
-            event.preventDefault();
-
-            const formData = new FormData();
-            formData.append('codigo', codigo);
-            formData.append('descripcion', document.getElementById('descripcionModificar').value);
-            formData.append('cantidad', document.getElementById('cantidadModificar').value);
-            formData.append('proveedor', document.getElementById('proveModificar').value);
-            formData.append('precio', document.getElementById('precioModificar').value);
-
-            // Si se ha seleccionado una imagen nueva, la añade al formData. 
-            if (imagenSeleccionada) {
-                formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
-            }
-
-            fetch(URL + 'productos/' + codigo, {
-                method: 'PUT',
-                body: formData,
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    } else {
-                        throw new Error('Error al guardar los cambios del producto.')
-                    }
-                })
-                .then(data => {
-                    alert('Producto actualizado correctamente.');
-                    limpiarFormulario();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al actualizar el producto.');
-                });
-        }
-
-        // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
-        function limpiarFormulario() {
-            document.getElementById('codigo').value = '';
-            document.getElementById('descripcionModificar').value = '';
-            document.getElementById('cantidadModificar').value = '';
-            document.getElementById('precioModificar').value = '';
-            document.getElementById('proveModificar').value = '';
-            document.getElementById('nuevaImagen').value = '';
-
-            const imagenActual = document.getElementById('imagen-actual');
-            imagenActual.style.display = 'none';
-
-            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-            imagenVistaPrevia.style.display = 'none';
-
-            codigo = '';
-            descripcion = '';
-            cantidad = '';
-            precio = '';
-            proveedor = '';
-            imagen_url = '';
-            imagenSeleccionada = null;
-            imagenUrlTemp = null;
-            mostrarDatosProducto = false;
-
-            document.getElementById('datos-producto').style.display = 'none';
-    </script> -->
 </body>
 
 </html>

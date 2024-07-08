@@ -5,20 +5,21 @@
 * {
     font-family: 'Quicksand', sans-serif !important;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Mon !important;
-    /* background-color: #1d1a39; */
-    background-color: black !important;
-    color: white;
+    background: linear-gradient(120deg, #0d0d0d, #1a1a1a);
+    color: #ffffff;
+    transition: background-color 0.5s ease;
 }
 
 .contenedor-centrado {
     display: flex;
     width: 100%;
     justify-content: center;
-    background-color: black;
+    background-color: transparent;
 }
 
 .logo-centrado {
@@ -27,25 +28,24 @@ body {
     align-items: center;
     margin-bottom: 5px;
     margin-top: 120px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .navbar-index {
     margin: 0;
     padding: 0;
-
     top: 0;
     width: 100vw;
     height: 100px;
-    /* background-color: #390E8C; */
-    background-color: black;
+    background: linear-gradient(120deg, #141414, #2b2b2b);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     overflow: hidden;
     margin-bottom: 20px;
     position: fixed !important;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: background 0.5s ease;
 }
 
 .logo-nav {
@@ -56,10 +56,15 @@ body {
 
 p {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #f9f9f9;
+    background-color: #1a1a1a;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
+    color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1,
@@ -69,33 +74,36 @@ h4,
 h5,
 h6 {
     text-align: center;
-    color: #ffd200 !important;
+    color: #dc143c !important;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #390e8c;
-    border: 1px solid lightslategray;
+    background: linear-gradient(120deg, #1a1a1a, #292929);
+    border: 1px solid #333;
     border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-in-out;
 }
 
 table {
     width: 50%;
     margin: 0 auto;
     padding: 20px;
-    /* background-color: #390e8c; */
-    background-color: #1d1a39;
-    border: 1px solid lightslategray;
+    background: linear-gradient(120deg, #1a1a1a, #292929);
+    border: 1px solid #333;
     border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: background 0.5s ease;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    color: #ffffff;
 }
 
 input[type="text"],
@@ -104,46 +112,59 @@ textarea {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #cccccc;
+    border: 1px solid #444;
     border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #dc143c;
+    box-shadow: 0px 0px 8px rgba(220, 20, 60, 0.5);
 }
 
 input[type="submit"] {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #dc143c;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #b11233;
 }
 
 button {
     padding: 8px;
     margin: 4px;
-    background-color: #007bff;
+    background-color: #dc143c;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.btnEliminar{
-    background-color: red;
+
+.btnEliminar {
+    background-color: #ff4500;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #b11233;
 }
 
 a {
     padding: 8px;
     margin: 4px;
-    /* background-color: #fdab13; */
-    background-color: rgb(49, 106, 49);
-    color: #1d1a39;
+    background-color: #dc143c;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -151,16 +172,20 @@ a {
     font-size: 85%;
     font-weight: 800;
     font-family: 'Quicksand', sans-serif !important;
+    transition: background-color 0.3s ease;
 }
 
 a:hover {
-    background-color: #1d1a39;
-    color: #fdab13
+    background-color: #b11233;
+    color: #ffffff;
 }
 
 footer {
-    background-color: #1d1a39;
+    background: linear-gradient(120deg, #1a1a1a, #292929);
     margin: 25px auto;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: background 0.5s ease;
 }
 
 /* propiedades de las tarjetas que estan dentro del footer */
@@ -169,16 +194,19 @@ footer {
     margin-bottom: 0px;
     margin-left: 50px;
     margin-right: 50px;
-
 }
 
 .card {
-    background-color: black !important;
+    background: linear-gradient(120deg, #1a1a1a, #292929) !important;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: background 0.5s ease;
 }
 
 .card-text {
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: #ffffff;
 }
 
 .imgPerfil {
@@ -188,9 +216,30 @@ footer {
 .logoCar {
     border-radius: 50%;
 }
-.imgAuto{
+
+.imgAuto {
     display: block;
     max-width: 150px;
     max-height: 150px;
     object-fit: cover;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
